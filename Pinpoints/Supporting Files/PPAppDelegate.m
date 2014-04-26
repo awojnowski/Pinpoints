@@ -8,19 +8,25 @@
 
 #import "PPAppDelegate.h"
 
+#import "PPSplashViewController.h"
+
 @implementation PPAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+-(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    PPSplashViewController *splashViewController = [[PPSplashViewController alloc] init];
+    
+    UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [window setRootViewController:splashViewController];
+    [window makeKeyAndVisible];
+    [self setWindow:window];
+    
     return YES;
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
