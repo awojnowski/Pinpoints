@@ -8,6 +8,8 @@
 
 #import "PPHomeViewController.h"
 
+#import "PPPinpoint.h"
+
 @interface PPHomeViewController ()
 
 @end

@@ -26,6 +26,10 @@
 		930953F6190B2E14006A4152 /* PPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 930953F5190B2E14006A4152 /* PPViewController.m */; };
 		930953F9190B2E1F006A4152 /* PPSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 930953F8190B2E1F006A4152 /* PPSplashViewController.m */; };
 		930953FC190B2E28006A4152 /* PPHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 930953FB190B2E28006A4152 /* PPHomeViewController.m */; };
+		93095403190B3454006A4152 /* PPCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 93095400190B3454006A4152 /* PPCategory.m */; };
+		93095404190B3454006A4152 /* PPPinpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 93095402190B3454006A4152 /* PPPinpoint.m */; };
+		93095409190B345A006A4152 /* _PPCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 93095406190B345A006A4152 /* _PPCategory.m */; };
+		9309540A190B345A006A4152 /* _PPPinpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 93095408190B345A006A4152 /* _PPPinpoint.m */; };
 		E28218185215426B8FD18C92 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B46D07E737D46EF84FBB44E /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +70,14 @@
 		930953F8190B2E1F006A4152 /* PPSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSplashViewController.m; sourceTree = "<group>"; };
 		930953FA190B2E28006A4152 /* PPHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPHomeViewController.h; sourceTree = "<group>"; };
 		930953FB190B2E28006A4152 /* PPHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPHomeViewController.m; sourceTree = "<group>"; };
+		930953FF190B3454006A4152 /* PPCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPCategory.h; sourceTree = "<group>"; };
+		93095400190B3454006A4152 /* PPCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPCategory.m; sourceTree = "<group>"; };
+		93095401190B3454006A4152 /* PPPinpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPinpoint.h; sourceTree = "<group>"; };
+		93095402190B3454006A4152 /* PPPinpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPinpoint.m; sourceTree = "<group>"; };
+		93095405190B345A006A4152 /* _PPCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _PPCategory.h; sourceTree = "<group>"; };
+		93095406190B345A006A4152 /* _PPCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _PPCategory.m; sourceTree = "<group>"; };
+		93095407190B345A006A4152 /* _PPPinpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _PPPinpoint.h; sourceTree = "<group>"; };
+		93095408190B345A006A4152 /* _PPPinpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _PPPinpoint.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +190,11 @@
 		930953DD190B2BDC006A4152 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				930953FF190B3454006A4152 /* PPCategory.h */,
+				93095400190B3454006A4152 /* PPCategory.m */,
+				93095401190B3454006A4152 /* PPPinpoint.h */,
+				93095402190B3454006A4152 /* PPPinpoint.m */,
+				930953FD190B30B7006A4152 /* Machine */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -239,6 +256,17 @@
 			path = "View Controller";
 			sourceTree = "<group>";
 		};
+		930953FD190B30B7006A4152 /* Machine */ = {
+			isa = PBXGroup;
+			children = (
+				93095405190B345A006A4152 /* _PPCategory.h */,
+				93095406190B345A006A4152 /* _PPCategory.m */,
+				93095407190B345A006A4152 /* _PPPinpoint.h */,
+				93095408190B345A006A4152 /* _PPPinpoint.m */,
+			);
+			path = Machine;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -246,6 +274,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 930953D5190B1FDB006A4152 /* Build configuration list for PBXNativeTarget "Pinpoints" */;
 			buildPhases = (
+				930953FE190B3160006A4152 /* Mogenerator */,
 				0E18C45C8FEF4F4FA16B0336 /* Check Pods Manifest.lock */,
 				9309539F190B1FDB006A4152 /* Sources */,
 				930953A0190B1FDB006A4152 /* Frameworks */,
@@ -349,6 +378,20 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		930953FE190B3160006A4152 /* Mogenerator */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Mogenerator;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/mogenerator --model \"Pinpoints/Supporting Files/Core Data/Pinpoints.xcdatamodeld\" --machine-dir \"Pinpoints/Models/Machine\" --human-dir \"Pinpoints/Models\" --template-var arc=true";
+		};
 		CF7D1904B4E6495BAE3A29B3 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -371,10 +414,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93095404190B3454006A4152 /* PPPinpoint.m in Sources */,
 				930953F6190B2E14006A4152 /* PPViewController.m in Sources */,
+				93095403190B3454006A4152 /* PPCategory.m in Sources */,
 				930953F9190B2E1F006A4152 /* PPSplashViewController.m in Sources */,
+				9309540A190B345A006A4152 /* _PPPinpoint.m in Sources */,
 				930953EE190B2BDC006A4152 /* main.m in Sources */,
 				930953FC190B2E28006A4152 /* PPHomeViewController.m in Sources */,
+				93095409190B345A006A4152 /* _PPCategory.m in Sources */,
 				930953EB190B2BDC006A4152 /* Pinpoints.xcdatamodeld in Sources */,
 				930953F0190B2BDC006A4152 /* PPAppDelegate.m in Sources */,
 			);
