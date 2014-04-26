@@ -8,7 +8,11 @@
 
 #import "PPSplashViewController.h"
 
+#import "PPHomeViewController.h"
+
 @interface PPSplashViewController ()
+
+@property (nonatomic, strong) PPHomeViewController *homeViewController;
 
 @end
 
@@ -18,15 +22,20 @@
     
     [super viewDidLoad];
     
-    [[self view] setBackgroundColor:[UIColor orangeColor]];
+    [[self view] setBackgroundColor:[UIColor whiteColor]];
+    
+    PPHomeViewController *homeViewController = [[PPHomeViewController alloc] init];
+    [[self view] addSubview:[homeViewController view]];
+    [self setHomeViewController:homeViewController];
+    [self addChildViewController:homeViewController];
     
 }
 
--(void)viewWillAppear:(BOOL)animated {
+-(void)viewWillLayoutSubviews {
     
-    [super viewWillAppear:animated];
+    [super viewWillLayoutSubviews];
     
-    
+    [[[self homeViewController] view] setFrame:[[self view] bounds]];
     
 }
 

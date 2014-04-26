@@ -18,13 +18,13 @@
     
     [super viewDidLoad];
     
-    
+    [[self view] setBackgroundColor:[UIColor blueColor]];
     
 }
 
--(void)viewWillAppear:(BOOL)animated {
+-(void)viewWillLayoutSubviews {
     
-    [super viewWillAppear:animated];
+    [super viewWillLayoutSubviews];
     
     
     

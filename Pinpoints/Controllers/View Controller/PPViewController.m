@@ -22,9 +22,9 @@
     
 }
 
--(void)viewWillAppear:(BOOL)animated {
+-(void)viewWillLayoutSubviews {
     
-    [super viewWillAppear:animated];
+    [super viewWillLayoutSubviews];
     
     
     
