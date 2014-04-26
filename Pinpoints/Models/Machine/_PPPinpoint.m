@@ -11,7 +11,7 @@ const struct PPPinpointAttributes PPPinpointAttributes = {
 };
 
 const struct PPPinpointRelationships PPPinpointRelationships = {
-	.category = @"category",
+	.group = @"group",
 };
 
 const struct PPPinpointFetchedProperties PPPinpointFetchedProperties = {
@@ -102,7 +102,7 @@ const struct PPPinpointFetchedProperties PPPinpointFetchedProperties = {
 
 
 
-@dynamic category;
+@dynamic group;
 
 	
 

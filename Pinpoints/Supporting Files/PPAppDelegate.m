@@ -8,6 +8,7 @@
 
 #import "PPAppDelegate.h"
 
+#import "PPNavigationController.h"
 #import "PPSplashViewController.h"
 
 #import "PPCoreDataHandler.h"
@@ -16,9 +17,12 @@
 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+    [PPNavigationController setupNavigationControllerStyles];
+    
     PPSplashViewController *splashViewController = [[PPSplashViewController alloc] init];
     
     UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [window setTintColor:[PPColors tintColor]];
     [window setRootViewController:splashViewController];
     [window makeKeyAndVisible];
     [self setWindow:window];
@@ -37,6 +41,8 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    [[PPCoreDataHandler sharedHandler] saveContext];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -51,8 +57,6 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Saves changes in the application's managed object context before the application terminates.
-    [[PPCoreDataHandler sharedHandler] saveContext];
     
 }
 

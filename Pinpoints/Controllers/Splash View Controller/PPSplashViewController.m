@@ -9,10 +9,13 @@
 #import "PPSplashViewController.h"
 
 #import "PPHomeViewController.h"
+#import "PPNavigationController.h"
+
+#import "PPGroup.h"
 
 @interface PPSplashViewController ()
 
-@property (nonatomic, strong) PPHomeViewController *homeViewController;
+@property (nonatomic, strong) UIViewController *currentViewController;
 
 @end
 
@@ -24,10 +27,14 @@
     
     [[self view] setBackgroundColor:[UIColor whiteColor]];
     
+    [self performInitialSetup];
+    
     PPHomeViewController *homeViewController = [[PPHomeViewController alloc] init];
-    [[self view] addSubview:[homeViewController view]];
-    [self setHomeViewController:homeViewController];
-    [self addChildViewController:homeViewController];
+    
+    PPNavigationController *navigationController = [[PPNavigationController alloc] initWithRootViewController:homeViewController];
+    [[self view] addSubview:[navigationController view]];
+    [self addChildViewController:navigationController];
+    [self setCurrentViewController:navigationController];
     
 }
 
@@ -35,7 +42,32 @@
     
     [super viewWillLayoutSubviews];
     
-    [[[self homeViewController] view] setFrame:[[self view] bounds]];
+    [[[self currentViewController] view] setFrame:[[self view] frame]];
+    
+}
+
+-(BOOL)shouldAutorotate {
+    
+    return NO;
+    
+}
+
+#pragma mark - Setup
+
+-(void)performInitialSetup {
+    
+    if ([[PPGroup allGroups] count] == 0) {
+        
+        NSLog(@"No groups have been created.  We are creating a default group now.");
+        
+        [PPGroup createGroupWithName:@"New Group"];
+        NSLog(@"Here are all the groups after creation: %@",[PPGroup allGroups]);
+        
+    } else {
+        
+        NSLog(@"There is already a created group.");
+        
+    }
     
 }
 

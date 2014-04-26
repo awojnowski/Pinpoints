@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C1021" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="PPCategory" representedClassName="PPCategory" syncable="YES">
+    <entity name="PPGroup" representedClassName="PPGroup" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="pinpoints" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PPPinpoint" inverseName="category" inverseEntity="PPPinpoint" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PPGroup" inverseName="groups" inverseEntity="PPGroup" syncable="YES"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PPGroup" inverseName="group" inverseEntity="PPGroup" syncable="YES"/>
+        <relationship name="pinpoints" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PPPinpoint" inverseName="group" inverseEntity="PPPinpoint" syncable="YES"/>
     </entity>
     <entity name="PPPinpoint" representedClassName="PPPinpoint" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="visited" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PPCategory" inverseName="pinpoints" inverseEntity="PPCategory" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PPGroup" inverseName="pinpoints" inverseEntity="PPGroup" syncable="YES"/>
     </entity>
     <elements>
-        <element name="PPCategory" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="PPGroup" positionX="-63" positionY="-18" width="128" height="103"/>
         <element name="PPPinpoint" positionX="-54" positionY="-9" width="128" height="118"/>
     </elements>
 </model>

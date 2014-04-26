@@ -1,13 +1,15 @@
 //
-//  PPHomeViewController.h
+//  PPColors.h
 //  Pinpoints
 //
 //  Created by Aaron Wojnowski on 2014-04-25.
 //  Copyright (c) 2014 aaron. All rights reserved.
 //
 
-#import "PPViewController.h"
+#import <Foundation/Foundation.h>
 
-@interface PPHomeViewController : PPViewController
+@interface PPColors : NSObject
+
++(UIColor *)tintColor;
 
 @end

@@ -12,13 +12,13 @@ extern const struct PPPinpointAttributes {
 } PPPinpointAttributes;
 
 extern const struct PPPinpointRelationships {
-	__unsafe_unretained NSString *category;
+	__unsafe_unretained NSString *group;
 } PPPinpointRelationships;
 
 extern const struct PPPinpointFetchedProperties {
 } PPPinpointFetchedProperties;
 
-@class PPCategory;
+@class PPGroup;
 
 
 
@@ -82,9 +82,9 @@ extern const struct PPPinpointFetchedProperties {
 
 
 
-@property (nonatomic, strong) PPCategory *category;
+@property (nonatomic, strong) PPGroup *group;
 
-//- (BOOL)validateCategory:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateGroup:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -127,8 +127,8 @@ extern const struct PPPinpointFetchedProperties {
 
 
 
-- (PPCategory*)primitiveCategory;
-- (void)setPrimitiveCategory:(PPCategory*)value;
+- (PPGroup*)primitiveGroup;
+- (void)setPrimitiveGroup:(PPGroup*)value;
 
 
 @end

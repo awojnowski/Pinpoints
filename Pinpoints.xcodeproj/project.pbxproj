@@ -26,11 +26,26 @@
 		930953F6190B2E14006A4152 /* PPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 930953F5190B2E14006A4152 /* PPViewController.m */; };
 		930953F9190B2E1F006A4152 /* PPSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 930953F8190B2E1F006A4152 /* PPSplashViewController.m */; };
 		930953FC190B2E28006A4152 /* PPHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 930953FB190B2E28006A4152 /* PPHomeViewController.m */; };
-		93095403190B3454006A4152 /* PPCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 93095400190B3454006A4152 /* PPCategory.m */; };
 		93095404190B3454006A4152 /* PPPinpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 93095402190B3454006A4152 /* PPPinpoint.m */; };
-		93095409190B345A006A4152 /* _PPCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 93095406190B345A006A4152 /* _PPCategory.m */; };
 		9309540A190B345A006A4152 /* _PPPinpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 93095408190B345A006A4152 /* _PPPinpoint.m */; };
 		9309540D190B35B0006A4152 /* PPCoreDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9309540C190B35B0006A4152 /* PPCoreDataHandler.m */; };
+		9309540F190B3E82006A4152 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9309540E190B3E82006A4152 /* MapKit.framework */; };
+		93095413190B3F5F006A4152 /* PPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93095412190B3F5F006A4152 /* PPNavigationController.m */; };
+		93095417190B4199006A4152 /* NavigationController.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93095416190B4199006A4152 /* NavigationController.xcassets */; };
+		93095419190B41A2006A4152 /* SplashViewController.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93095418190B41A2006A4152 /* SplashViewController.xcassets */; };
+		9309541B190B41A8006A4152 /* ViewController.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9309541A190B41A8006A4152 /* ViewController.xcassets */; };
+		9309541E190B4413006A4152 /* PPColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9309541D190B4413006A4152 /* PPColors.m */; };
+		93095422190C1D87006A4152 /* PPMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93095421190C1D87006A4152 /* PPMenuViewController.m */; };
+		93095424190C1DA3006A4152 /* MenuViewController.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93095423190C1DA3006A4152 /* MenuViewController.xcassets */; };
+		93095427190C2517006A4152 /* PPMenuInternalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93095426190C2517006A4152 /* PPMenuInternalViewController.m */; };
+		9309542A190C258A006A4152 /* PPGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 93095429190C258A006A4152 /* PPGroup.m */; };
+		9309542D190C2592006A4152 /* _PPGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 9309542C190C2592006A4152 /* _PPGroup.m */; };
+		9309542F190C31D0006A4152 /* HomeViewController.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9309542E190C31D0006A4152 /* HomeViewController.xcassets */; };
+		93095433190C39E9006A4152 /* PPMenuTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93095432190C39E9006A4152 /* PPMenuTableView.m */; };
+		9340E6A0190C41DA0069B7BF /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 9340E69F190C41DA0069B7BF /* UIImage+ImageEffects.m */; };
+		9340E6A4190C475B0069B7BF /* PPBackgroundTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9340E6A3190C475B0069B7BF /* PPBackgroundTableViewCell.m */; };
+		9340E6AB190C48460069B7BF /* PPMenuGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9340E6AA190C48460069B7BF /* PPMenuGroupTableViewCell.m */; };
+		9340E6AE190C484F0069B7BF /* PPMenuPinpointTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9340E6AD190C484F0069B7BF /* PPMenuPinpointTableViewCell.m */; };
 		E28218185215426B8FD18C92 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B46D07E737D46EF84FBB44E /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -71,16 +86,40 @@
 		930953F8190B2E1F006A4152 /* PPSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSplashViewController.m; sourceTree = "<group>"; };
 		930953FA190B2E28006A4152 /* PPHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPHomeViewController.h; sourceTree = "<group>"; };
 		930953FB190B2E28006A4152 /* PPHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPHomeViewController.m; sourceTree = "<group>"; };
-		930953FF190B3454006A4152 /* PPCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPCategory.h; sourceTree = "<group>"; };
-		93095400190B3454006A4152 /* PPCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPCategory.m; sourceTree = "<group>"; };
 		93095401190B3454006A4152 /* PPPinpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPinpoint.h; sourceTree = "<group>"; };
 		93095402190B3454006A4152 /* PPPinpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPinpoint.m; sourceTree = "<group>"; };
-		93095405190B345A006A4152 /* _PPCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _PPCategory.h; sourceTree = "<group>"; };
-		93095406190B345A006A4152 /* _PPCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _PPCategory.m; sourceTree = "<group>"; };
 		93095407190B345A006A4152 /* _PPPinpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _PPPinpoint.h; sourceTree = "<group>"; };
 		93095408190B345A006A4152 /* _PPPinpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _PPPinpoint.m; sourceTree = "<group>"; };
 		9309540B190B35B0006A4152 /* PPCoreDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPCoreDataHandler.h; sourceTree = "<group>"; };
 		9309540C190B35B0006A4152 /* PPCoreDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPCoreDataHandler.m; sourceTree = "<group>"; };
+		9309540E190B3E82006A4152 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		93095411190B3F5F006A4152 /* PPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPNavigationController.h; sourceTree = "<group>"; };
+		93095412190B3F5F006A4152 /* PPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPNavigationController.m; sourceTree = "<group>"; };
+		93095416190B4199006A4152 /* NavigationController.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = NavigationController.xcassets; sourceTree = "<group>"; };
+		93095418190B41A2006A4152 /* SplashViewController.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SplashViewController.xcassets; sourceTree = "<group>"; };
+		9309541A190B41A8006A4152 /* ViewController.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ViewController.xcassets; sourceTree = "<group>"; };
+		9309541C190B4413006A4152 /* PPColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPColors.h; sourceTree = "<group>"; };
+		9309541D190B4413006A4152 /* PPColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPColors.m; sourceTree = "<group>"; };
+		93095420190C1D87006A4152 /* PPMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMenuViewController.h; sourceTree = "<group>"; };
+		93095421190C1D87006A4152 /* PPMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMenuViewController.m; sourceTree = "<group>"; };
+		93095423190C1DA3006A4152 /* MenuViewController.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MenuViewController.xcassets; sourceTree = "<group>"; };
+		93095425190C2517006A4152 /* PPMenuInternalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMenuInternalViewController.h; sourceTree = "<group>"; };
+		93095426190C2517006A4152 /* PPMenuInternalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMenuInternalViewController.m; sourceTree = "<group>"; };
+		93095428190C258A006A4152 /* PPGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPGroup.h; sourceTree = "<group>"; };
+		93095429190C258A006A4152 /* PPGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPGroup.m; sourceTree = "<group>"; };
+		9309542B190C2592006A4152 /* _PPGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _PPGroup.h; sourceTree = "<group>"; };
+		9309542C190C2592006A4152 /* _PPGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _PPGroup.m; sourceTree = "<group>"; };
+		9309542E190C31D0006A4152 /* HomeViewController.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HomeViewController.xcassets; sourceTree = "<group>"; };
+		93095431190C39E9006A4152 /* PPMenuTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMenuTableView.h; sourceTree = "<group>"; };
+		93095432190C39E9006A4152 /* PPMenuTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMenuTableView.m; sourceTree = "<group>"; };
+		9340E69E190C41DA0069B7BF /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		9340E69F190C41DA0069B7BF /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		9340E6A2190C475B0069B7BF /* PPBackgroundTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPBackgroundTableViewCell.h; sourceTree = "<group>"; };
+		9340E6A3190C475B0069B7BF /* PPBackgroundTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPBackgroundTableViewCell.m; sourceTree = "<group>"; };
+		9340E6A9190C48460069B7BF /* PPMenuGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMenuGroupTableViewCell.h; sourceTree = "<group>"; };
+		9340E6AA190C48460069B7BF /* PPMenuGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMenuGroupTableViewCell.m; sourceTree = "<group>"; };
+		9340E6AC190C484F0069B7BF /* PPMenuPinpointTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMenuPinpointTableViewCell.h; sourceTree = "<group>"; };
+		9340E6AD190C484F0069B7BF /* PPMenuPinpointTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMenuPinpointTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9309540F190B3E82006A4152 /* MapKit.framework in Frameworks */,
 				930953A9190B1FDB006A4152 /* CoreGraphics.framework in Frameworks */,
 				930953AD190B1FDB006A4152 /* CoreData.framework in Frameworks */,
 				930953AB190B1FDB006A4152 /* UIKit.framework in Frameworks */,
@@ -133,6 +173,7 @@
 		930953A5190B1FDB006A4152 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9309540E190B3E82006A4152 /* MapKit.framework */,
 				930953A6190B1FDB006A4152 /* Foundation.framework */,
 				930953A8190B1FDB006A4152 /* CoreGraphics.framework */,
 				930953AA190B1FDB006A4152 /* UIKit.framework */,
@@ -150,6 +191,7 @@
 				930953EA190B2BDC006A4152 /* Views */,
 				930953DB190B2BDC006A4152 /* Controllers */,
 				930953DC190B2BDC006A4152 /* Extensions */,
+				9340E69D190C41CF0069B7BF /* Categories */,
 				930953DE190B2BDC006A4152 /* Supporting Files */,
 			);
 			path = Pinpoints;
@@ -177,6 +219,8 @@
 			isa = PBXGroup;
 			children = (
 				930953F1190B2DF5006A4152 /* Home View Controller */,
+				9309541F190C1D65006A4152 /* Menu View Controller */,
+				93095410190B3F52006A4152 /* Navigation Controller */,
 				930953F2190B2DF5006A4152 /* Splash View Controller */,
 				930953F3190B2E0D006A4152 /* View Controller */,
 			);
@@ -193,10 +237,12 @@
 		930953DD190B2BDC006A4152 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9309541C190B4413006A4152 /* PPColors.h */,
+				9309541D190B4413006A4152 /* PPColors.m */,
 				9309540B190B35B0006A4152 /* PPCoreDataHandler.h */,
 				9309540C190B35B0006A4152 /* PPCoreDataHandler.m */,
-				930953FF190B3454006A4152 /* PPCategory.h */,
-				93095400190B3454006A4152 /* PPCategory.m */,
+				93095428190C258A006A4152 /* PPGroup.h */,
+				93095429190C258A006A4152 /* PPGroup.m */,
 				93095401190B3454006A4152 /* PPPinpoint.h */,
 				93095402190B3454006A4152 /* PPPinpoint.m */,
 				930953FD190B30B7006A4152 /* Machine */,
@@ -230,6 +276,8 @@
 		930953EA190B2BDC006A4152 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				93095430190C39CC006A4152 /* UITableView */,
+				9340E6A1190C47500069B7BF /* UITableViewCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -237,6 +285,7 @@
 		930953F1190B2DF5006A4152 /* Home View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9309542E190C31D0006A4152 /* HomeViewController.xcassets */,
 				930953FA190B2E28006A4152 /* PPHomeViewController.h */,
 				930953FB190B2E28006A4152 /* PPHomeViewController.m */,
 			);
@@ -246,6 +295,7 @@
 		930953F2190B2DF5006A4152 /* Splash View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				93095418190B41A2006A4152 /* SplashViewController.xcassets */,
 				930953F7190B2E1F006A4152 /* PPSplashViewController.h */,
 				930953F8190B2E1F006A4152 /* PPSplashViewController.m */,
 			);
@@ -255,6 +305,7 @@
 		930953F3190B2E0D006A4152 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9309541A190B41A8006A4152 /* ViewController.xcassets */,
 				930953F4190B2E14006A4152 /* PPViewController.h */,
 				930953F5190B2E14006A4152 /* PPViewController.m */,
 			);
@@ -264,12 +315,73 @@
 		930953FD190B30B7006A4152 /* Machine */ = {
 			isa = PBXGroup;
 			children = (
-				93095405190B345A006A4152 /* _PPCategory.h */,
-				93095406190B345A006A4152 /* _PPCategory.m */,
+				9309542B190C2592006A4152 /* _PPGroup.h */,
+				9309542C190C2592006A4152 /* _PPGroup.m */,
 				93095407190B345A006A4152 /* _PPPinpoint.h */,
 				93095408190B345A006A4152 /* _PPPinpoint.m */,
 			);
 			path = Machine;
+			sourceTree = "<group>";
+		};
+		93095410190B3F52006A4152 /* Navigation Controller */ = {
+			isa = PBXGroup;
+			children = (
+				93095416190B4199006A4152 /* NavigationController.xcassets */,
+				93095411190B3F5F006A4152 /* PPNavigationController.h */,
+				93095412190B3F5F006A4152 /* PPNavigationController.m */,
+			);
+			path = "Navigation Controller";
+			sourceTree = "<group>";
+		};
+		9309541F190C1D65006A4152 /* Menu View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				93095423190C1DA3006A4152 /* MenuViewController.xcassets */,
+				93095420190C1D87006A4152 /* PPMenuViewController.h */,
+				93095421190C1D87006A4152 /* PPMenuViewController.m */,
+				93095425190C2517006A4152 /* PPMenuInternalViewController.h */,
+				93095426190C2517006A4152 /* PPMenuInternalViewController.m */,
+			);
+			path = "Menu View Controller";
+			sourceTree = "<group>";
+		};
+		93095430190C39CC006A4152 /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				93095431190C39E9006A4152 /* PPMenuTableView.h */,
+				93095432190C39E9006A4152 /* PPMenuTableView.m */,
+			);
+			path = UITableView;
+			sourceTree = "<group>";
+		};
+		9340E69D190C41CF0069B7BF /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				9340E69E190C41DA0069B7BF /* UIImage+ImageEffects.h */,
+				9340E69F190C41DA0069B7BF /* UIImage+ImageEffects.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		9340E6A1190C47500069B7BF /* UITableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				9340E6A8190C47E50069B7BF /* Menu Table View Cell */,
+				9340E6A2190C475B0069B7BF /* PPBackgroundTableViewCell.h */,
+				9340E6A3190C475B0069B7BF /* PPBackgroundTableViewCell.m */,
+			);
+			path = UITableViewCell;
+			sourceTree = "<group>";
+		};
+		9340E6A8190C47E50069B7BF /* Menu Table View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9340E6A9190C48460069B7BF /* PPMenuGroupTableViewCell.h */,
+				9340E6AA190C48460069B7BF /* PPMenuGroupTableViewCell.m */,
+				9340E6AC190C484F0069B7BF /* PPMenuPinpointTableViewCell.h */,
+				9340E6AD190C484F0069B7BF /* PPMenuPinpointTableViewCell.m */,
+			);
+			path = "Menu Table View Cell";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,6 +466,11 @@
 				930953EC190B2BDC006A4152 /* InfoPlist.strings in Resources */,
 				930953EF190B2BDC006A4152 /* Pinpoints-Info.plist in Resources */,
 				930953ED190B2BDC006A4152 /* Images.xcassets in Resources */,
+				93095424190C1DA3006A4152 /* MenuViewController.xcassets in Resources */,
+				9309541B190B41A8006A4152 /* ViewController.xcassets in Resources */,
+				93095419190B41A2006A4152 /* SplashViewController.xcassets in Resources */,
+				93095417190B4199006A4152 /* NavigationController.xcassets in Resources */,
+				9309542F190C31D0006A4152 /* HomeViewController.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,17 +536,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93095427190C2517006A4152 /* PPMenuInternalViewController.m in Sources */,
+				9340E6AB190C48460069B7BF /* PPMenuGroupTableViewCell.m in Sources */,
+				9309542A190C258A006A4152 /* PPGroup.m in Sources */,
 				93095404190B3454006A4152 /* PPPinpoint.m in Sources */,
 				930953F6190B2E14006A4152 /* PPViewController.m in Sources */,
+				93095433190C39E9006A4152 /* PPMenuTableView.m in Sources */,
 				9309540D190B35B0006A4152 /* PPCoreDataHandler.m in Sources */,
-				93095403190B3454006A4152 /* PPCategory.m in Sources */,
+				9309541E190B4413006A4152 /* PPColors.m in Sources */,
+				93095413190B3F5F006A4152 /* PPNavigationController.m in Sources */,
 				930953F9190B2E1F006A4152 /* PPSplashViewController.m in Sources */,
 				9309540A190B345A006A4152 /* _PPPinpoint.m in Sources */,
 				930953EE190B2BDC006A4152 /* main.m in Sources */,
+				9309542D190C2592006A4152 /* _PPGroup.m in Sources */,
 				930953FC190B2E28006A4152 /* PPHomeViewController.m in Sources */,
-				93095409190B345A006A4152 /* _PPCategory.m in Sources */,
 				930953EB190B2BDC006A4152 /* Pinpoints.xcdatamodeld in Sources */,
 				930953F0190B2BDC006A4152 /* PPAppDelegate.m in Sources */,
+				9340E6A4190C475B0069B7BF /* PPBackgroundTableViewCell.m in Sources */,
+				9340E6AE190C484F0069B7BF /* PPMenuPinpointTableViewCell.m in Sources */,
+				93095422190C1D87006A4152 /* PPMenuViewController.m in Sources */,
+				9340E6A0190C41DA0069B7BF /* UIImage+ImageEffects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 aaron. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PPViewController.h"
 
-@interface PPSplashViewController : UIViewController
+@interface PPSplashViewController : PPViewController
 
 @end
