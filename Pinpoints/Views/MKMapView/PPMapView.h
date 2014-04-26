@@ -1,19 +1,17 @@
 //
-//  PPMenuGroupTableViewCell.h
+//  PPMapView.h
 //  Pinpoints
 //
 //  Created by Aaron Wojnowski on 2014-04-26.
 //  Copyright (c) 2014 aaron. All rights reserved.
 //
 
-#import "PPBackgroundTableViewCell.h"
+#import <MapKit/MapKit.h>
 
 @class PPGroup;
 
-@interface PPMenuGroupTableViewCell : PPBackgroundTableViewCell
+@interface PPMapView : MKMapView
 
 @property (nonatomic, strong) PPGroup *group;
-
-+(CGFloat)heightForGroup:(PPGroup *)group;
 
 @end

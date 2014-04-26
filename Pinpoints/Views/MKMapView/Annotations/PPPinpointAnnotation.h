@@ -1,19 +1,18 @@
 //
-//  PPMenuPinpointTableViewCell.h
+//  PPPinpointAnnotation.h
 //  Pinpoints
 //
 //  Created by Aaron Wojnowski on 2014-04-26.
 //  Copyright (c) 2014 aaron. All rights reserved.
 //
 
-#import "PPBackgroundTableViewCell.h"
+#import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
 @class PPPinpoint;
 
-@interface PPMenuPinpointTableViewCell : PPBackgroundTableViewCell
+@interface PPPinpointAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic, strong) PPPinpoint *pinpoint;
-
-+(CGFloat)heightForPinpoint:(PPPinpoint *)pinpoint;
 
 @end

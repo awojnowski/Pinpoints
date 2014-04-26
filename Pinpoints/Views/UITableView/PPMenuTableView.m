@@ -12,6 +12,7 @@
 #import "PPMenuPinpointTableViewCell.h"
 
 #import "PPGroup.h"
+#import "PPPinpoint.h"
 
 @interface PPMenuTableView () <UITableViewDelegate, UITableViewDataSource>
 
@@ -45,37 +46,67 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 1;
+    PPGroup *group = [self groups][section];
+    return 1 + [[group groups] count];
     
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    PPGroup *group = [self groups][[indexPath section]];
+    
     if ([indexPath row] == 0) {
         
         // section header
         
-        return 60.0;
+        return [PPMenuGroupTableViewCell heightForGroup:group];
+        
+    } else {
+        
+        // section contents
+        
+        PPPinpoint *pinpoint = [[[group pinpoints] allObjects] objectAtIndex:[indexPath row] - 1];
+        return [PPMenuPinpointTableViewCell heightForPinpoint:pinpoint];
         
     }
-    
-    return 44.0;
     
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    PPMenuGroupTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCell"];
-    if (!cell) {
+    PPGroup *group = [self groups][[indexPath section]];
+    
+    if ([indexPath row] == 0) {
         
-        cell = [[PPMenuGroupTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MenuCell"];
+        // section header
+        
+        PPMenuGroupTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCell"];
+        if (!cell) {
+            
+            cell = [[PPMenuGroupTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MenuCell"];
+            
+        }
+        [cell setGroup:group];
+        
+        return cell;
+        
+    } else {
+        
+        // section contents
+        
+        PPPinpoint *pinpoint = [[[group pinpoints] allObjects] objectAtIndex:[indexPath row] - 1];
+        
+        PPMenuPinpointTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PinpointCell"];
+        if (!cell) {
+            
+            cell = [[PPMenuPinpointTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"PinpointCell"];
+            
+        }
+        [cell setPinpoint:pinpoint];
+        
+        return cell;
         
     }
-    
-    PPGroup *group = [self groups][[indexPath section]];
-    [[cell textLabel] setText:[group name]];
-    
-    return cell;
     
 }
 

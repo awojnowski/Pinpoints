@@ -2,6 +2,8 @@
 
 @interface PPGroup : _PPGroup {}
 
+-(NSArray *)pinpointsArray;
+
 +(NSArray *)allGroups;
 
 +(PPGroup *)createGroupWithName:(NSString *)name;

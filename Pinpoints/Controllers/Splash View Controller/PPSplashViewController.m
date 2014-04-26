@@ -65,7 +65,7 @@
         
     } else {
         
-        NSLog(@"There is already a created group.");
+        NSLog(@"There is already a created group.  Not creating any default ones.");
         
     }
     

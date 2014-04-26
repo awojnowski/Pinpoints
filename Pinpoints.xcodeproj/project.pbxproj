@@ -46,6 +46,9 @@
 		9340E6A4190C475B0069B7BF /* PPBackgroundTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9340E6A3190C475B0069B7BF /* PPBackgroundTableViewCell.m */; };
 		9340E6AB190C48460069B7BF /* PPMenuGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9340E6AA190C48460069B7BF /* PPMenuGroupTableViewCell.m */; };
 		9340E6AE190C484F0069B7BF /* PPMenuPinpointTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9340E6AD190C484F0069B7BF /* PPMenuPinpointTableViewCell.m */; };
+		9340E6B2190C62650069B7BF /* PPMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9340E6B1190C62650069B7BF /* PPMapView.m */; };
+		9340E6B6190C64330069B7BF /* PPPinpointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9340E6B5190C64330069B7BF /* PPPinpointAnnotation.m */; };
+		9340E6B9190C6D220069B7BF /* UIImage+SolidColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9340E6B8190C6D220069B7BF /* UIImage+SolidColor.m */; };
 		E28218185215426B8FD18C92 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B46D07E737D46EF84FBB44E /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +123,12 @@
 		9340E6AA190C48460069B7BF /* PPMenuGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMenuGroupTableViewCell.m; sourceTree = "<group>"; };
 		9340E6AC190C484F0069B7BF /* PPMenuPinpointTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMenuPinpointTableViewCell.h; sourceTree = "<group>"; };
 		9340E6AD190C484F0069B7BF /* PPMenuPinpointTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMenuPinpointTableViewCell.m; sourceTree = "<group>"; };
+		9340E6B0190C62650069B7BF /* PPMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMapView.h; sourceTree = "<group>"; };
+		9340E6B1190C62650069B7BF /* PPMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMapView.m; sourceTree = "<group>"; };
+		9340E6B4190C64330069B7BF /* PPPinpointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPinpointAnnotation.h; sourceTree = "<group>"; };
+		9340E6B5190C64330069B7BF /* PPPinpointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPinpointAnnotation.m; sourceTree = "<group>"; };
+		9340E6B7190C6D220069B7BF /* UIImage+SolidColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SolidColor.h"; sourceTree = "<group>"; };
+		9340E6B8190C6D220069B7BF /* UIImage+SolidColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SolidColor.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +285,7 @@
 		930953EA190B2BDC006A4152 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9340E6AF190C625C0069B7BF /* MKMapView */,
 				93095430190C39CC006A4152 /* UITableView */,
 				9340E6A1190C47500069B7BF /* UITableViewCell */,
 			);
@@ -359,6 +369,8 @@
 			children = (
 				9340E69E190C41DA0069B7BF /* UIImage+ImageEffects.h */,
 				9340E69F190C41DA0069B7BF /* UIImage+ImageEffects.m */,
+				9340E6B7190C6D220069B7BF /* UIImage+SolidColor.h */,
+				9340E6B8190C6D220069B7BF /* UIImage+SolidColor.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -382,6 +394,25 @@
 				9340E6AD190C484F0069B7BF /* PPMenuPinpointTableViewCell.m */,
 			);
 			path = "Menu Table View Cell";
+			sourceTree = "<group>";
+		};
+		9340E6AF190C625C0069B7BF /* MKMapView */ = {
+			isa = PBXGroup;
+			children = (
+				9340E6B3190C64170069B7BF /* Annotations */,
+				9340E6B0190C62650069B7BF /* PPMapView.h */,
+				9340E6B1190C62650069B7BF /* PPMapView.m */,
+			);
+			path = MKMapView;
+			sourceTree = "<group>";
+		};
+		9340E6B3190C64170069B7BF /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				9340E6B4190C64330069B7BF /* PPPinpointAnnotation.h */,
+				9340E6B5190C64330069B7BF /* PPPinpointAnnotation.m */,
+			);
+			path = Annotations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -536,10 +567,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9340E6B9190C6D220069B7BF /* UIImage+SolidColor.m in Sources */,
 				93095427190C2517006A4152 /* PPMenuInternalViewController.m in Sources */,
 				9340E6AB190C48460069B7BF /* PPMenuGroupTableViewCell.m in Sources */,
 				9309542A190C258A006A4152 /* PPGroup.m in Sources */,
+				9340E6B2190C62650069B7BF /* PPMapView.m in Sources */,
 				93095404190B3454006A4152 /* PPPinpoint.m in Sources */,
+				9340E6B6190C64330069B7BF /* PPPinpointAnnotation.m in Sources */,
 				930953F6190B2E14006A4152 /* PPViewController.m in Sources */,
 				93095433190C39E9006A4152 /* PPMenuTableView.m in Sources */,
 				9309540D190B35B0006A4152 /* PPCoreDataHandler.m in Sources */,

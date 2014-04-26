@@ -3,12 +3,25 @@
 
 @interface PPGroup ()
 
-// Private interface goes here.
+
 
 @end
 
-
 @implementation PPGroup
+
+#pragma mark - Getters & Setters
+
+-(NSArray *)pinpointsArray {
+    
+    NSArray *pinpoints = [[self pinpoints] allObjects];
+    pinpoints = [pinpoints sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        
+        return [[obj1 name] compare:[obj2 name]];
+        
+    }];
+    return pinpoints;
+    
+}
 
 -(NSString *)description {
     

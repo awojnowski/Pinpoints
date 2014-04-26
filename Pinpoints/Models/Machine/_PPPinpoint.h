@@ -7,6 +7,8 @@
 extern const struct PPPinpointAttributes {
 	__unsafe_unretained NSString *address;
 	__unsafe_unretained NSString *caption;
+	__unsafe_unretained NSString *latitude;
+	__unsafe_unretained NSString *longitude;
 	__unsafe_unretained NSString *name;
 	__unsafe_unretained NSString *visited;
 } PPPinpointAttributes;
@@ -19,6 +21,8 @@ extern const struct PPPinpointFetchedProperties {
 } PPPinpointFetchedProperties;
 
 @class PPGroup;
+
+
 
 
 
@@ -53,6 +57,34 @@ extern const struct PPPinpointFetchedProperties {
 
 
 //- (BOOL)validateCaption:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* latitude;
+
+
+
+@property float latitudeValue;
+- (float)latitudeValue;
+- (void)setLatitudeValue:(float)value_;
+
+//- (BOOL)validateLatitude:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* longitude;
+
+
+
+@property float longitudeValue;
+- (float)longitudeValue;
+- (void)setLongitudeValue:(float)value_;
+
+//- (BOOL)validateLongitude:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -107,6 +139,24 @@ extern const struct PPPinpointFetchedProperties {
 
 - (NSString*)primitiveCaption;
 - (void)setPrimitiveCaption:(NSString*)value;
+
+
+
+
+- (NSNumber*)primitiveLatitude;
+- (void)setPrimitiveLatitude:(NSNumber*)value;
+
+- (float)primitiveLatitudeValue;
+- (void)setPrimitiveLatitudeValue:(float)value_;
+
+
+
+
+- (NSNumber*)primitiveLongitude;
+- (void)setPrimitiveLongitude:(NSNumber*)value;
+
+- (float)primitiveLongitudeValue;
+- (void)setPrimitiveLongitudeValue:(float)value_;
 
 
 

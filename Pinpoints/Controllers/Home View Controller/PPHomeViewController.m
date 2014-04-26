@@ -9,11 +9,12 @@
 #import "PPHomeViewController.h"
 #import "PPMenuViewController.h"
 
+#import "PPMapView.h"
+
+#import "PPGroup.h"
 #import "PPPinpoint.h"
 
 #import "UIImage+ImageEffects.h"
-
-#import <MapKit/MapKit.h>
 
 CGFloat const kPPHomeViewControllerMenuAnimationLength = 0.3;
 
@@ -38,9 +39,19 @@ CGFloat const kPPHomeViewControllerMenuAnimationLength = 0.3;
     
     [[self navigationController] setNavigationBarHidden:YES];
     
-    MKMapView *mapView = [[MKMapView alloc] init];
+    PPGroup *defaultGroup = nil;
+    NSArray *groups = [PPGroup allGroups];
+    
+    if ([groups count] > 0) {
+        
+        defaultGroup = [groups firstObject];
+        
+    }
+    
+    PPMapView *mapView = [[PPMapView alloc] init];
     [mapView setMapType:MKMapTypeStandard];
     [mapView setShowsUserLocation:YES];
+    [mapView setGroup:defaultGroup];
     [[self view] addSubview:mapView];
     [self setMapView:mapView];
     
@@ -120,10 +131,12 @@ CGFloat const kPPHomeViewControllerMenuAnimationLength = 0.3;
     
     UIView *menuBackgroundView = [[UIView alloc] init];
     [menuBackgroundView setFrame:[[[self navigationController] view] bounds]];
+    [menuBackgroundView setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1]];
     [[self view] insertSubview:menuBackgroundView belowSubview:[self statusBarView]];
     [self setMenuBackgroundView:menuBackgroundView];
     
-    UIImageView *snapshotImageView = [[UIImageView alloc] init];
+    // disabled blur for now
+    /*UIImageView *snapshotImageView = [[UIImageView alloc] init];
     [snapshotImageView setFrame:[[self view] bounds]];
     [snapshotImageView setAlpha:0.0];
     [menuBackgroundView addSubview:snapshotImageView];
@@ -144,7 +157,7 @@ CGFloat const kPPHomeViewControllerMenuAnimationLength = 0.3;
             
         });
         
-    });
+    });*/
     
     UIButton *hideButton = [[UIButton alloc] init];
     [hideButton setFrame:[menuBackgroundView bounds]];
