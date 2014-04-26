@@ -30,6 +30,7 @@
 		93095404190B3454006A4152 /* PPPinpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 93095402190B3454006A4152 /* PPPinpoint.m */; };
 		93095409190B345A006A4152 /* _PPCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 93095406190B345A006A4152 /* _PPCategory.m */; };
 		9309540A190B345A006A4152 /* _PPPinpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 93095408190B345A006A4152 /* _PPPinpoint.m */; };
+		9309540D190B35B0006A4152 /* PPCoreDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9309540C190B35B0006A4152 /* PPCoreDataHandler.m */; };
 		E28218185215426B8FD18C92 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B46D07E737D46EF84FBB44E /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,8 @@
 		93095406190B345A006A4152 /* _PPCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _PPCategory.m; sourceTree = "<group>"; };
 		93095407190B345A006A4152 /* _PPPinpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _PPPinpoint.h; sourceTree = "<group>"; };
 		93095408190B345A006A4152 /* _PPPinpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _PPPinpoint.m; sourceTree = "<group>"; };
+		9309540B190B35B0006A4152 /* PPCoreDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPCoreDataHandler.h; sourceTree = "<group>"; };
+		9309540C190B35B0006A4152 /* PPCoreDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPCoreDataHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +193,8 @@
 		930953DD190B2BDC006A4152 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9309540B190B35B0006A4152 /* PPCoreDataHandler.h */,
+				9309540C190B35B0006A4152 /* PPCoreDataHandler.m */,
 				930953FF190B3454006A4152 /* PPCategory.h */,
 				93095400190B3454006A4152 /* PPCategory.m */,
 				93095401190B3454006A4152 /* PPPinpoint.h */,
@@ -416,6 +421,7 @@
 			files = (
 				93095404190B3454006A4152 /* PPPinpoint.m in Sources */,
 				930953F6190B2E14006A4152 /* PPViewController.m in Sources */,
+				9309540D190B35B0006A4152 /* PPCoreDataHandler.m in Sources */,
 				93095403190B3454006A4152 /* PPCategory.m in Sources */,
 				930953F9190B2E1F006A4152 /* PPSplashViewController.m in Sources */,
 				9309540A190B345A006A4152 /* _PPPinpoint.m in Sources */,
