@@ -72,7 +72,7 @@
 -(void)setPinpoint:(PPPinpoint *)pinpoint {
     
     _pinpoint = pinpoint;
-    
+        
     if ([pinpoint isVisited]) {
         
         [self setPinColor:MKPinAnnotationColorGreen];
