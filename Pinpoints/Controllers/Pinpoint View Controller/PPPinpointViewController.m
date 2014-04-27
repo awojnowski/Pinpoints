@@ -32,7 +32,7 @@ NSInteger const kPPPinpointViewControllerCaptionTextFieldTag = 3;
 
 -(void)dealloc {
     
-    
+    [self removeObservers];
     
 }
 
@@ -43,6 +43,8 @@ NSInteger const kPPPinpointViewControllerCaptionTextFieldTag = 3;
     [self setTitle:@"Pinpoint"];
     
     [[self view] setBackgroundColor:[UIColor whiteColor]];
+    
+    [self addObservers];
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     [tableView setDelegate:self];
@@ -383,6 +385,34 @@ NSInteger const kPPPinpointViewControllerCaptionTextFieldTag = 3;
     } else if ([textField tag] == kPPPinpointViewControllerCaptionTextFieldTag) {
         
         [[self pinpoint] setCaption:text];
+        
+    }
+    
+}
+
+#pragma mark - KVO
+
+-(void)addObservers {
+    
+    [[self pinpoint] addObserver:self forKeyPath:@"address" options:0 context:NULL];
+    
+}
+
+-(void)removeObservers {
+    
+    [[self pinpoint] removeObserver:self forKeyPath:@"address"];
+    
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    
+    if (object == [self pinpoint]) {
+        
+        if ([keyPath isEqualToString:@"address"]) {
+            
+            [[self tableView] reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+            
+        }
         
     }
     

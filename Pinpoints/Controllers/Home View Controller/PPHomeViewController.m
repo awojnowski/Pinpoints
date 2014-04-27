@@ -231,10 +231,14 @@ CGFloat const kPPHomeViewControllerMenuAnimationLength = 0.3;
 
 -(void)mapView:(PPMapView *)mapView didPlacePinpoint:(PPPinpoint *)pinpoint {
     
-    PPPinpointViewController *pinpointViewController = [[PPPinpointViewController alloc] init];
-    [pinpointViewController setPinpoint:pinpoint];
-    [pinpointViewController setFocusNameFieldOnView:YES];
-    [[self navigationController] pushViewController:pinpointViewController animated:YES];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+        PPPinpointViewController *pinpointViewController = [[PPPinpointViewController alloc] init];
+        [pinpointViewController setPinpoint:pinpoint];
+        [pinpointViewController setFocusNameFieldOnView:YES];
+        [[self navigationController] pushViewController:pinpointViewController animated:YES];
+        
+    });
     
 }
 
