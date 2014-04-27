@@ -9,13 +9,12 @@
 #import "PPMapView.h"
 
 #import "PPPinpointAnnotation.h"
+#import "PPPinpointPinAnnotationView.h"
 
 #import "PPGroup.h"
 #import "PPPinpoint.h"
 
 @interface PPMapView () <MKMapViewDelegate>
-
-
 
 @end
 
@@ -100,25 +99,13 @@
         PPPinpointAnnotation *pinpointAnnotation = (PPPinpointAnnotation *)annotation;
         PPPinpoint *pinpoint = [pinpointAnnotation pinpoint];
         
-        MKPinAnnotationView *annotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"PinpointAnnotation"];
+        PPPinpointPinAnnotationView *annotationView = (PPPinpointPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"PinpointAnnotation"];
         if (!annotationView) {
             
-            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:pinpointAnnotation reuseIdentifier:@"PinpointAnnotation"];
-            [annotationView setAnimatesDrop:YES];
-            [annotationView setCanShowCallout:YES];
-            [annotationView setDraggable:YES];
+            annotationView = [[PPPinpointPinAnnotationView alloc] initWithAnnotation:pinpointAnnotation reuseIdentifier:@"PinpointAnnotation"];
             
         }
-        
-        if ([pinpoint isVisited]) {
-            
-            [annotationView setPinColor:MKPinAnnotationColorGreen];
-            
-        } else {
-            
-            [annotationView setPinColor:MKPinAnnotationColorRed];
-            
-        }
+        [annotationView setPinpoint:pinpoint];
         
         return annotationView;
         
@@ -128,12 +115,35 @@
     
 }
 
+-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    
+    if ([view isKindOfClass:[PPPinpointPinAnnotationView class]]) {
+        
+        PPPinpoint *pinpoint = [(PPPinpointPinAnnotationView *)view pinpoint];
+        
+        if ([[self mapDelegate] respondsToSelector:@selector(mapView:didViewPinpoint:)])
+            [[self mapDelegate] mapView:self didViewPinpoint:pinpoint];
+        
+    }
+    
+}
+
 -(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState {
     
     if (newState == MKAnnotationViewDragStateEnding) {
         
         CLLocationCoordinate2D coordinate = [[view annotation] coordinate];
         NSLog(@"Pin dropped at {%f, %f}", coordinate.latitude, coordinate.longitude);
+        
+    }
+    
+}
+
+-(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    
+    if ([view isKindOfClass:[PPPinpointPinAnnotationView class]]) {
+        
+        [(PPPinpointPinAnnotationView *)view loadStreetViewImage];
         
     }
     

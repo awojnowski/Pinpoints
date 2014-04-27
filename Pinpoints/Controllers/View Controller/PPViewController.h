@@ -10,4 +10,6 @@
 
 @interface PPViewController : UIViewController
 
+-(BOOL)prefersNavigationBarHidden;
+
 @end

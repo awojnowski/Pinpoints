@@ -22,6 +22,13 @@
     
 }
 
+-(NSURL *)streetViewURLWithSize:(CGSize)size {
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/streetview?size=%0.0fx%0.0f&location=%f,%f&fov=90&heading=235&pitch=10&sensor=false",size.width,size.height,[self latitudeValue],[self longitudeValue]];
+    return [NSURL URLWithString:urlString];
+    
+}
+
 #pragma mark - Class Methods
 
 +(PPPinpoint *)createPinpointInGroup:(PPGroup *)group {

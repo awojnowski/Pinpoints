@@ -8,6 +8,7 @@
 
 #import "PPHomeViewController.h"
 #import "PPMenuViewController.h"
+#import "PPPinpointViewController.h"
 
 #import "PPMapView.h"
 
@@ -18,7 +19,7 @@
 
 CGFloat const kPPHomeViewControllerMenuAnimationLength = 0.3;
 
-@interface PPHomeViewController () <PPMenuViewControllerDelegate>
+@interface PPHomeViewController () <PPMapViewDelegate, PPMenuViewControllerDelegate>
 
 @property (nonatomic, strong) MKMapView *mapView;
 @property (nonatomic, strong) UIView *statusBarView;
@@ -37,8 +38,6 @@ CGFloat const kPPHomeViewControllerMenuAnimationLength = 0.3;
     
     [super viewDidLoad];
     
-    [[self navigationController] setNavigationBarHidden:YES];
-    
     PPGroup *defaultGroup = nil;
     NSArray *groups = [PPGroup allGroups];
     
@@ -49,6 +48,7 @@ CGFloat const kPPHomeViewControllerMenuAnimationLength = 0.3;
     }
     
     PPMapView *mapView = [[PPMapView alloc] init];
+    [mapView setMapDelegate:self];
     [mapView setMapType:MKMapTypeStandard];
     [mapView setShowsUserLocation:YES];
     [mapView setGroup:defaultGroup];
@@ -83,6 +83,12 @@ CGFloat const kPPHomeViewControllerMenuAnimationLength = 0.3;
     [[self mapView] setFrame:[[self view] frame]];
     
     [[self menuButton] setFrame:CGRectMake(320 - 10 - 44, CGRectGetHeight([[self view] bounds]) - 10 - 44, 44, 44)];
+    
+}
+
+-(BOOL)prefersNavigationBarHidden {
+    
+    return YES;
     
 }
 
@@ -216,6 +222,16 @@ CGFloat const kPPHomeViewControllerMenuAnimationLength = 0.3;
     UIGraphicsEndImageContext();
     
     return blurredSnapshotImage;
+    
+}
+
+#pragma mark - PPMapViewDelegate
+
+-(void)mapView:(PPMapView *)mapView didViewPinpoint:(PPPinpoint *)pinpoint {
+    
+    PPPinpointViewController *pinpointViewController = [[PPPinpointViewController alloc] init];
+    [pinpointViewController setPinpoint:pinpoint];
+    [[self navigationController] pushViewController:pinpointViewController animated:YES];
     
 }
 

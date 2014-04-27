@@ -7,14 +7,38 @@
 //
 
 #import "PPNavigationController.h"
+#import "PPViewController.h"
 
-@interface PPNavigationController ()
+@interface PPNavigationController () <UINavigationControllerDelegate>
 
 @end
 
 @implementation PPNavigationController
 
+-(id)initWithRootViewController:(UIViewController *)rootViewController {
+    
+    self = [super initWithRootViewController:rootViewController];
+    if (self) {
+        
+        [self setDelegate:self];
+        
+    }
+    return self;
+    
+}
 
+#pragma mark - UINavigationControllerDelegate
+
+-(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    
+    if ([viewController isKindOfClass:[PPViewController class]]) {
+        
+        BOOL hideNavigationBar = [(PPViewController *)viewController prefersNavigationBarHidden];
+        [self setNavigationBarHidden:hideNavigationBar animated:YES];
+        
+    }
+    
+}
 
 #pragma mark - Class Methods
 

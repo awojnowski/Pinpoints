@@ -49,6 +49,10 @@
 		9340E6B2190C62650069B7BF /* PPMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9340E6B1190C62650069B7BF /* PPMapView.m */; };
 		9340E6B6190C64330069B7BF /* PPPinpointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9340E6B5190C64330069B7BF /* PPPinpointAnnotation.m */; };
 		9340E6B9190C6D220069B7BF /* UIImage+SolidColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9340E6B8190C6D220069B7BF /* UIImage+SolidColor.m */; };
+		9340E6BF190C77EB0069B7BF /* PPPinpointPinAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9340E6BE190C77EB0069B7BF /* PPPinpointPinAnnotationView.m */; };
+		9340E6C3190C81FA0069B7BF /* PPPinpointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9340E6C2190C81FA0069B7BF /* PPPinpointViewController.m */; };
+		9340E6C5190C820C0069B7BF /* PPPinpointViewController.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9340E6C4190C820C0069B7BF /* PPPinpointViewController.xcassets */; };
+		9340E6C7190C86A10069B7BF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9340E6C6190C86A10069B7BF /* CoreLocation.framework */; };
 		E28218185215426B8FD18C92 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B46D07E737D46EF84FBB44E /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +133,12 @@
 		9340E6B5190C64330069B7BF /* PPPinpointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPinpointAnnotation.m; sourceTree = "<group>"; };
 		9340E6B7190C6D220069B7BF /* UIImage+SolidColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SolidColor.h"; sourceTree = "<group>"; };
 		9340E6B8190C6D220069B7BF /* UIImage+SolidColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SolidColor.m"; sourceTree = "<group>"; };
+		9340E6BD190C77EB0069B7BF /* PPPinpointPinAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPinpointPinAnnotationView.h; sourceTree = "<group>"; };
+		9340E6BE190C77EB0069B7BF /* PPPinpointPinAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPinpointPinAnnotationView.m; sourceTree = "<group>"; };
+		9340E6C1190C81FA0069B7BF /* PPPinpointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPinpointViewController.h; sourceTree = "<group>"; };
+		9340E6C2190C81FA0069B7BF /* PPPinpointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPinpointViewController.m; sourceTree = "<group>"; };
+		9340E6C4190C820C0069B7BF /* PPPinpointViewController.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PPPinpointViewController.xcassets; sourceTree = "<group>"; };
+		9340E6C6190C86A10069B7BF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9340E6C7190C86A10069B7BF /* CoreLocation.framework in Frameworks */,
 				9309540F190B3E82006A4152 /* MapKit.framework in Frameworks */,
 				930953A9190B1FDB006A4152 /* CoreGraphics.framework in Frameworks */,
 				930953AD190B1FDB006A4152 /* CoreData.framework in Frameworks */,
@@ -182,6 +193,7 @@
 		930953A5190B1FDB006A4152 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9340E6C6190C86A10069B7BF /* CoreLocation.framework */,
 				9309540E190B3E82006A4152 /* MapKit.framework */,
 				930953A6190B1FDB006A4152 /* Foundation.framework */,
 				930953A8190B1FDB006A4152 /* CoreGraphics.framework */,
@@ -230,6 +242,7 @@
 				930953F1190B2DF5006A4152 /* Home View Controller */,
 				9309541F190C1D65006A4152 /* Menu View Controller */,
 				93095410190B3F52006A4152 /* Navigation Controller */,
+				9340E6C0190C81EA0069B7BF /* Pinpoint View Controller */,
 				930953F2190B2DF5006A4152 /* Splash View Controller */,
 				930953F3190B2E0D006A4152 /* View Controller */,
 			);
@@ -411,8 +424,20 @@
 			children = (
 				9340E6B4190C64330069B7BF /* PPPinpointAnnotation.h */,
 				9340E6B5190C64330069B7BF /* PPPinpointAnnotation.m */,
+				9340E6BD190C77EB0069B7BF /* PPPinpointPinAnnotationView.h */,
+				9340E6BE190C77EB0069B7BF /* PPPinpointPinAnnotationView.m */,
 			);
 			path = Annotations;
+			sourceTree = "<group>";
+		};
+		9340E6C0190C81EA0069B7BF /* Pinpoint View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9340E6C4190C820C0069B7BF /* PPPinpointViewController.xcassets */,
+				9340E6C1190C81FA0069B7BF /* PPPinpointViewController.h */,
+				9340E6C2190C81FA0069B7BF /* PPPinpointViewController.m */,
+			);
+			path = "Pinpoint View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -502,6 +527,7 @@
 				93095419190B41A2006A4152 /* SplashViewController.xcassets in Resources */,
 				93095417190B4199006A4152 /* NavigationController.xcassets in Resources */,
 				9309542F190C31D0006A4152 /* HomeViewController.xcassets in Resources */,
+				9340E6C5190C820C0069B7BF /* PPPinpointViewController.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,6 +601,7 @@
 				93095404190B3454006A4152 /* PPPinpoint.m in Sources */,
 				9340E6B6190C64330069B7BF /* PPPinpointAnnotation.m in Sources */,
 				930953F6190B2E14006A4152 /* PPViewController.m in Sources */,
+				9340E6C3190C81FA0069B7BF /* PPPinpointViewController.m in Sources */,
 				93095433190C39E9006A4152 /* PPMenuTableView.m in Sources */,
 				9309540D190B35B0006A4152 /* PPCoreDataHandler.m in Sources */,
 				9309541E190B4413006A4152 /* PPColors.m in Sources */,
@@ -587,6 +614,7 @@
 				930953EB190B2BDC006A4152 /* Pinpoints.xcdatamodeld in Sources */,
 				930953F0190B2BDC006A4152 /* PPAppDelegate.m in Sources */,
 				9340E6A4190C475B0069B7BF /* PPBackgroundTableViewCell.m in Sources */,
+				9340E6BF190C77EB0069B7BF /* PPPinpointPinAnnotationView.m in Sources */,
 				9340E6AE190C484F0069B7BF /* PPMenuPinpointTableViewCell.m in Sources */,
 				93095422190C1D87006A4152 /* PPMenuViewController.m in Sources */,
 				9340E6A0190C41DA0069B7BF /* UIImage+ImageEffects.m in Sources */,

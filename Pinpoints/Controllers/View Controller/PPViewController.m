@@ -30,4 +30,12 @@
     
 }
 
+#pragma mark - Getters & Setters
+
+-(BOOL)prefersNavigationBarHidden {
+    
+    return NO;
+    
+}
+
 @end

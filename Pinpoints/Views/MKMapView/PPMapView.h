@@ -8,10 +8,21 @@
 
 #import <MapKit/MapKit.h>
 
-@class PPGroup;
+@class PPGroup, PPPinpoint;
+
+@protocol PPMapViewDelegate;
 
 @interface PPMapView : MKMapView
 
+@property (nonatomic, weak) id <PPMapViewDelegate> mapDelegate;
+
 @property (nonatomic, strong) PPGroup *group;
+
+@end
+
+@protocol PPMapViewDelegate <NSObject>
+
+@optional
+-(void)mapView:(PPMapView *)mapView didViewPinpoint:(PPPinpoint *)pinpoint;
 
 @end

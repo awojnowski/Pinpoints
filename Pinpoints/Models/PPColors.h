@@ -10,6 +10,7 @@
 
 @interface PPColors : NSObject
 
++(UIColor *)backgroundColor;
 +(UIColor *)tintColor;
 
 @end

@@ -6,6 +6,7 @@
 
 -(CLLocationCoordinate2D)coordinate;
 -(BOOL)isVisited;
+-(NSURL *)streetViewURLWithSize:(CGSize)size;
 
 +(PPPinpoint *)createPinpointInGroup:(PPGroup *)group;
 
