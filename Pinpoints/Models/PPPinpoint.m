@@ -2,13 +2,58 @@
 #import "PPGroup.h"
 #import "PPPinpoint.h"
 
+#import <AddressBookUI/AddressBookUI.h>
+#import <CoreLocation/CoreLocation.h>
+
 @interface PPPinpoint ()
 
-
+@property (nonatomic, strong) CLGeocoder *geocoder;
 
 @end
 
 @implementation PPPinpoint
+
+@synthesize geocoder=_geocoder;
+
+#pragma mark - Helper Methods
+
+-(void)fetchAddressFromCoordinate {
+    
+    if (![self geocoder]) {
+        
+        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        [self setGeocoder:geocoder];
+        
+    } else {
+        
+        [[self geocoder] cancelGeocode];
+        
+    }
+    
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:[self latitudeValue] longitude:[self longitudeValue]];
+    
+    [[self geocoder] reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        
+        if (!error) {
+            
+            CLPlacemark *placemark = [placemarks firstObject];
+            
+            NSString *address = ABCreateStringWithAddressDictionary([placemark addressDictionary], YES);
+            [self setAddress:address];
+            
+            NSLog(@"Found new address: %@",address);
+            
+        } else {
+            
+            NSLog(@"Error while finding address: %@",error);
+            
+        }
+        
+    }];
+    
+}
+
+#pragma mark - Getters & Setters
 
 -(CLLocationCoordinate2D)coordinate {
     

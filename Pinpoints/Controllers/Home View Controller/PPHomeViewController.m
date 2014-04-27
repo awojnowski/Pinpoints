@@ -38,6 +38,8 @@ CGFloat const kPPHomeViewControllerMenuAnimationLength = 0.3;
     
     [super viewDidLoad];
     
+    [[self view] setBackgroundColor:[PPColors backgroundColor]];
+    
     PPGroup *defaultGroup = nil;
     NSArray *groups = [PPGroup allGroups];
     
@@ -226,6 +228,15 @@ CGFloat const kPPHomeViewControllerMenuAnimationLength = 0.3;
 }
 
 #pragma mark - PPMapViewDelegate
+
+-(void)mapView:(PPMapView *)mapView didPlacePinpoint:(PPPinpoint *)pinpoint {
+    
+    PPPinpointViewController *pinpointViewController = [[PPPinpointViewController alloc] init];
+    [pinpointViewController setPinpoint:pinpoint];
+    [pinpointViewController setFocusNameFieldOnView:YES];
+    [[self navigationController] pushViewController:pinpointViewController animated:YES];
+    
+}
 
 -(void)mapView:(PPMapView *)mapView didViewPinpoint:(PPPinpoint *)pinpoint {
     

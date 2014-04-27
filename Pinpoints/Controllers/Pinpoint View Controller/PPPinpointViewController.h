@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong) PPPinpoint *pinpoint;
 
+@property (nonatomic, assign) BOOL focusNameFieldOnView;
+
 @end

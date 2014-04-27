@@ -4,6 +4,8 @@
 
 @interface PPPinpoint : _PPPinpoint {}
 
+-(void)fetchAddressFromCoordinate;
+
 -(CLLocationCoordinate2D)coordinate;
 -(BOOL)isVisited;
 -(NSURL *)streetViewURLWithSize:(CGSize)size;

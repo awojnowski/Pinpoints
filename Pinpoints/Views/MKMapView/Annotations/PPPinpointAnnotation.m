@@ -42,6 +42,7 @@
     
     [[self pinpoint] setLongitudeValue:newCoordinate.longitude];
     [[self pinpoint] setLatitudeValue:newCoordinate.latitude];
+    [[self pinpoint] fetchAddressFromCoordinate];
     
 }
 

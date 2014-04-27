@@ -23,6 +23,7 @@
 @protocol PPMapViewDelegate <NSObject>
 
 @optional
+-(void)mapView:(PPMapView *)mapView didPlacePinpoint:(PPPinpoint *)pinpoint;
 -(void)mapView:(PPMapView *)mapView didViewPinpoint:(PPPinpoint *)pinpoint;
 
 @end

@@ -11,6 +11,7 @@
 #import "PPPinpointAnnotation.h"
 #import "PPPinpointPinAnnotationView.h"
 
+#import "PPCoreDataHandler.h"
 #import "PPGroup.h"
 #import "PPPinpoint.h"
 
@@ -19,6 +20,12 @@
 @end
 
 @implementation PPMapView
+
+-(void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+}
 
 -(id)init {
     
@@ -29,6 +36,8 @@
         
         UILongPressGestureRecognizer *addPinGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapHoldPin:)];
         [self addGestureRecognizer:addPinGestureRecognizer];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managedObjectsChanged:) name:NSManagedObjectContextObjectsDidChangeNotification object:[[PPCoreDataHandler sharedHandler] managedObjectContext]];
         
     }
     return self;
@@ -47,10 +56,14 @@
         PPPinpoint *pinpoint = [PPPinpoint createPinpointInGroup:[self group]];
         [pinpoint setLatitudeValue:coordinate.latitude];
         [pinpoint setLongitudeValue:coordinate.longitude];
+        [pinpoint fetchAddressFromCoordinate];
         
         PPPinpointAnnotation *annotation = [[PPPinpointAnnotation alloc] init];
         [annotation setPinpoint:pinpoint];
         [self addAnnotation:annotation];
+        
+        if ([[self mapDelegate] respondsToSelector:@selector(mapView:didPlacePinpoint:)])
+            [[self mapDelegate] mapView:self didPlacePinpoint:pinpoint];
         
     }
     
@@ -144,6 +157,39 @@
     if ([view isKindOfClass:[PPPinpointPinAnnotationView class]]) {
         
         [(PPPinpointPinAnnotationView *)view loadStreetViewImage];
+        
+    }
+    
+}
+
+#pragma mark - NSNotifications
+
+-(void)managedObjectsChanged:(NSNotification *)notification {
+    
+    NSSet *updatedObjects = [[notification userInfo] objectForKey:NSDeletedObjectsKey];
+    
+    // iterate through managed objects
+    for (NSManagedObject *object in updatedObjects) {
+        
+        if ([object isKindOfClass:[PPPinpoint class]]) {
+            
+            // check if the shown annotations contain the pinpoint
+            for (id <MKAnnotation> annotation in [self annotations]) {
+                
+                if ([annotation isKindOfClass:[PPPinpointAnnotation class]]) {
+                    
+                    // is that pinpoint the deleted one?  if so delete it
+                    if ([(PPPinpointAnnotation *)annotation pinpoint] == object) {
+                        
+                        [self removeAnnotation:annotation];
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }
         
     }
     
