@@ -2,6 +2,8 @@
 
 @interface PPGroup : _PPGroup {}
 
+@property (nonatomic, assign, getter = isExpanded) BOOL expanded;
+
 -(NSArray *)pinpointsArray;
 
 +(NSArray *)allGroups;

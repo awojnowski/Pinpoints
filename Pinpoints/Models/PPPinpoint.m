@@ -81,6 +81,8 @@
     PPPinpoint *pinpoint = (PPPinpoint *)[NSEntityDescription insertNewObjectForEntityForName:@"PPPinpoint" inManagedObjectContext:[[PPCoreDataHandler sharedHandler] managedObjectContext]];
     [pinpoint setName:@"Unnamed Pinpoint"];
     [group addPinpointsObject:pinpoint];
+    [pinpoint setGroup:group];
+        
     return pinpoint;
     
 }

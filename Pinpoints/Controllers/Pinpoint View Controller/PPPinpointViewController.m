@@ -49,6 +49,7 @@ NSInteger const kPPPinpointViewControllerCaptionTextFieldTag = 3;
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     [tableView setDelegate:self];
     [tableView setDataSource:self];
+    [tableView setSeparatorInset:UIEdgeInsetsZero];
     [[self view] addSubview:tableView];
     [self setTableView:tableView];
     
@@ -84,7 +85,7 @@ NSInteger const kPPPinpointViewControllerCaptionTextFieldTag = 3;
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     if (section == 0) return 3;
-    if (section == 1) return 1;
+    if (section == 1) return 2;
     if (section == 2) return 1;
     return 0;
     
@@ -236,16 +237,20 @@ NSInteger const kPPPinpointViewControllerCaptionTextFieldTag = 3;
             
             cell = [[PPBackgroundTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"BackgroundCell"];
             [[cell textLabel] setTextAlignment:NSTextAlignmentCenter];
+            [cell setDefaultBackgroundColor:[UIColor whiteColor]];
+            [cell setSelectedBackgroundColor:[UIColor colorWithRed:0.98 green:0.98 blue:0.98 alpha:1.0]];
+            [[cell textLabel] setTextColor:[UIColor darkGrayColor]];
             
         }
         
         if ([indexPath row] == 0) {
             
-            [cell setDefaultBackgroundColor:[UIColor whiteColor]];
-            [cell setSelectedBackgroundColor:[UIColor colorWithRed:0.98 green:0.98 blue:0.98 alpha:1.0]];
-            [[cell textLabel] setTextColor:[UIColor darkGrayColor]];
             [[cell textLabel] setText:@"Share Pinpoint"];
             
+        } else if ([indexPath row] == 1) {
+                
+            [[cell textLabel] setText:@"View Pinpoint"];
+                
         }
         
         return cell;
@@ -295,6 +300,13 @@ NSInteger const kPPPinpointViewControllerCaptionTextFieldTag = 3;
                 shareString
             ] applicationActivities:nil];
             [self presentViewController:activityViewController animated:YES completion:nil];
+            
+        } else if ([indexPath row] == 1) {
+            
+            [[self navigationController] popViewControllerAnimated:YES];
+                
+            if ([[self delegate] respondsToSelector:@selector(pinpointViewControllerDidViewPinpointOnMap:)])
+                [[self delegate] pinpointViewControllerDidViewPinpointOnMap:self];
             
         }
         

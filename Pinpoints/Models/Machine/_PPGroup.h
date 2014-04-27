@@ -5,21 +5,19 @@
 
 
 extern const struct PPGroupAttributes {
+	__unsafe_unretained NSString *hidden;
 	__unsafe_unretained NSString *name;
 } PPGroupAttributes;
 
 extern const struct PPGroupRelationships {
-	__unsafe_unretained NSString *group;
-	__unsafe_unretained NSString *groups;
 	__unsafe_unretained NSString *pinpoints;
 } PPGroupRelationships;
 
 extern const struct PPGroupFetchedProperties {
 } PPGroupFetchedProperties;
 
-@class PPGroup;
-@class PPGroup;
 @class PPPinpoint;
+
 
 
 
@@ -36,26 +34,26 @@ extern const struct PPGroupFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSNumber* hidden;
+
+
+
+@property BOOL hiddenValue;
+- (BOOL)hiddenValue;
+- (void)setHiddenValue:(BOOL)value_;
+
+//- (BOOL)validateHidden:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
 @property (nonatomic, strong) NSString* name;
 
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
 
-
-
-
-
-@property (nonatomic, strong) PPGroup *group;
-
-//- (BOOL)validateGroup:(id*)value_ error:(NSError**)error_;
-
-
-
-
-@property (nonatomic, strong) NSSet *groups;
-
-- (NSMutableSet*)groupsSet;
 
 
 
@@ -72,11 +70,6 @@ extern const struct PPGroupFetchedProperties {
 
 @interface _PPGroup (CoreDataGeneratedAccessors)
 
-- (void)addGroups:(NSSet*)value_;
-- (void)removeGroups:(NSSet*)value_;
-- (void)addGroupsObject:(PPGroup*)value_;
-- (void)removeGroupsObject:(PPGroup*)value_;
-
 - (void)addPinpoints:(NSSet*)value_;
 - (void)removePinpoints:(NSSet*)value_;
 - (void)addPinpointsObject:(PPPinpoint*)value_;
@@ -87,20 +80,19 @@ extern const struct PPGroupFetchedProperties {
 @interface _PPGroup (CoreDataGeneratedPrimitiveAccessors)
 
 
+- (NSNumber*)primitiveHidden;
+- (void)setPrimitiveHidden:(NSNumber*)value;
+
+- (BOOL)primitiveHiddenValue;
+- (void)setPrimitiveHiddenValue:(BOOL)value_;
+
+
+
+
 - (NSString*)primitiveName;
 - (void)setPrimitiveName:(NSString*)value;
 
 
-
-
-
-- (PPGroup*)primitiveGroup;
-- (void)setPrimitiveGroup:(PPGroup*)value;
-
-
-
-- (NSMutableSet*)primitiveGroups;
-- (void)setPrimitiveGroups:(NSMutableSet*)value;
 
 
 

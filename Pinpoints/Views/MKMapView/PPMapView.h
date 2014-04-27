@@ -16,7 +16,8 @@
 
 @property (nonatomic, weak) id <PPMapViewDelegate> mapDelegate;
 
-@property (nonatomic, strong) PPGroup *group;
+-(void)refreshVisibleGroups;
+-(void)zoomToPinpoint:(PPPinpoint *)pinpoint;
 
 @end
 

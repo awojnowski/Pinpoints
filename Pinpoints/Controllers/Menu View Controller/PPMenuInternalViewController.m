@@ -10,7 +10,11 @@
 
 #import "PPMenuTableView.h"
 
-@interface PPMenuInternalViewController ()
+#import "PPCoreDataHandler.h"
+#import "PPGroup.h"
+#import "PPPinpoint.h"
+
+@interface PPMenuInternalViewController () <PPMenuTableViewDelegate>
 
 @property (nonatomic, strong) PPMenuTableView *tableView;
 
@@ -33,6 +37,7 @@
     [[self navigationItem] setRightBarButtonItem:editBarButtonItem];
     
     PPMenuTableView *tableView = [[PPMenuTableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    [tableView setMenuDelegate:self];
     [[self view] addSubview:tableView];
     [self setTableView:tableView];
     
@@ -58,6 +63,22 @@
 -(void)edit:(id)sender {
     
     
+    
+}
+
+#pragma mark - PPMenuTableViewDelegate
+
+-(void)menuTableView:(PPMenuTableView *)menuTableView didViewPinpoint:(PPPinpoint *)pinpoint {
+    
+    if ([[self delegate] respondsToSelector:@selector(menuViewController:didViewPinpoint:)])
+        [[self delegate] menuViewController:[self menuViewController] didViewPinpoint:pinpoint];
+    
+}
+
+-(void)menuTableViewDidUpdateVisibleGroups:(PPMenuTableView *)menuTableView {
+    
+    if ([[self delegate] respondsToSelector:@selector(menuViewControllerDidUpdateVisibleGroups:)])
+        [[self delegate] menuViewControllerDidUpdateVisibleGroups:[self menuViewController]];
     
 }
 

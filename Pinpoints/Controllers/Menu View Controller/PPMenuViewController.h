@@ -8,6 +8,8 @@
 
 #import "PPNavigationController.h"
 
+@class PPPinpoint;
+
 @protocol PPMenuViewControllerDelegate;
 
 @interface PPMenuViewController : PPNavigationController
@@ -20,5 +22,7 @@
 
 @optional
 -(void)menuViewControllerDidClose:(PPMenuViewController *)menuViewController;
+-(void)menuViewController:(PPMenuViewController *)menuViewController didViewPinpoint:(PPPinpoint *)pinpoint;
+-(void)menuViewControllerDidUpdateVisibleGroups:(PPMenuViewController *)menuViewController;
 
 @end

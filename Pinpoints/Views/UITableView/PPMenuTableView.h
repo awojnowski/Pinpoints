@@ -8,6 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@class PPPinpoint;
+
+@protocol PPMenuTableViewDelegate;
+
 @interface PPMenuTableView : UITableView
+
+@property (nonatomic, weak) id <PPMenuTableViewDelegate> menuDelegate;
+
+@end
+
+@protocol PPMenuTableViewDelegate <NSObject>
+
+@optional
+-(void)menuTableView:(PPMenuTableView *)menuTableView didViewPinpoint:(PPPinpoint *)pinpoint;
+-(void)menuTableViewDidUpdateVisibleGroups:(PPMenuTableView *)menuTableView;
 
 @end

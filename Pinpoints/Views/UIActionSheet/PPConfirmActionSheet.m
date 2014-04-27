@@ -31,8 +31,7 @@
     
 }
 
-#pragma mark -
-#pragma mark UIActionSheetDelegate
+#pragma mark - UIActionSheetDelegate
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
@@ -48,6 +47,5 @@
     }
     
 }
-
 
 @end

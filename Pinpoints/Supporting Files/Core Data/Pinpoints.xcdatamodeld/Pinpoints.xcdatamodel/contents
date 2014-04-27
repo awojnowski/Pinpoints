@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C1021" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="PPGroup" representedClassName="PPGroup" syncable="YES">
+        <attribute name="hidden" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PPGroup" inverseName="groups" inverseEntity="PPGroup" syncable="YES"/>
-        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PPGroup" inverseName="group" inverseEntity="PPGroup" syncable="YES"/>
         <relationship name="pinpoints" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PPPinpoint" inverseName="group" inverseEntity="PPPinpoint" syncable="YES"/>
     </entity>
     <entity name="PPPinpoint" representedClassName="PPPinpoint" syncable="YES">
@@ -16,7 +15,7 @@
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PPGroup" inverseName="pinpoints" inverseEntity="PPGroup" syncable="YES"/>
     </entity>
     <elements>
-        <element name="PPGroup" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="PPGroup" positionX="-63" positionY="-18" width="128" height="90"/>
         <element name="PPPinpoint" positionX="-54" positionY="-9" width="128" height="150"/>
     </elements>
 </model>

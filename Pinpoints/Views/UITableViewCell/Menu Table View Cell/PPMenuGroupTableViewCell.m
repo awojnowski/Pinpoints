@@ -14,6 +14,8 @@
 
 @interface PPMenuGroupTableViewCell ()
 
+@property (nonatomic, strong) UIButton *eyeButton;
+
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *countLabel;
 
@@ -30,6 +32,11 @@
         
         [self setDefaultBackgroundColor:[UIColor whiteColor]];
         [self setSelectedBackgroundColor:[UIColor colorWithRed:0.98 green:0.98 blue:0.98 alpha:1.0]];
+        
+        UIButton *eyeButton = [[UIButton alloc] init];
+        [eyeButton setImage:[[UIImage imageNamed:@"menuEyeButton"] convertedImageToColor:[PPColors tintColor]] forState:UIControlStateNormal];
+        [[self contentView] addSubview:eyeButton];
+        [self setEyeButton:eyeButton];
         
         UILabel *nameLabel = [[UILabel alloc] init];
         [nameLabel setBackgroundColor:[UIColor clearColor]];
@@ -62,15 +69,61 @@
     
     [super layoutSubviews];
     
-    [[self nameLabel] setFrame:CGRectMake(0, 0, 300, 0)];
+    [[self eyeButton] setFrame:CGRectMake(10, 0, 44, CGRectGetHeight([[self contentView] frame]))];
+    
+    CGFloat textLabelWidth = CGRectGetWidth([[self contentView] frame]) - 10 - CGRectGetMaxX([[self eyeButton] frame]) - 10;
+    CGFloat textX = CGRectGetMaxX([[self eyeButton] frame]) + 10;
+    
+    [[self nameLabel] setFrame:CGRectMake(0, 0, textLabelWidth, 0)];
     [[self nameLabel] sizeToFit];
-    [[self nameLabel] setFrame:CGRectMake(10, 10, 300, CGRectGetHeight([[self nameLabel] frame]))];
+    [[self nameLabel] setFrame:CGRectMake(textX, 10, CGRectGetWidth([[self nameLabel] frame]), CGRectGetHeight([[self nameLabel] frame]))];
     
-    [[self pinpointIconImageView] setFrame:CGRectMake(10, CGRectGetMaxY([[self nameLabel] frame]) + 4, 10, 15)];
+    [[self pinpointIconImageView] setFrame:CGRectMake(textX, CGRectGetMaxY([[self nameLabel] frame]) + 4, 10, 15)];
     
-    [[self countLabel] setFrame:CGRectMake(0, 0, 300, 0)];
+    [[self countLabel] setFrame:CGRectMake(0, 0, textLabelWidth - 15, 0)];
     [[self countLabel] sizeToFit];
-    [[self countLabel] setFrame:CGRectMake(25, CGRectGetMaxY([[self nameLabel] frame]) + 5, 285, CGRectGetHeight([[self countLabel] frame]))];
+    [[self countLabel] setFrame:CGRectMake(textX + 15, CGRectGetMaxY([[self nameLabel] frame]) + 5, textLabelWidth - 15, CGRectGetHeight([[self countLabel] frame]))];
+    
+}
+
+#pragma mark - Hiding and Showing
+
+-(void)show:(id)sender {
+    
+    [[self group] setHiddenValue:NO];
+    [self refreshEyeButton];
+    
+    if ([[self delegate] respondsToSelector:@selector(menuGroupTableViewCellDidShow:)])
+        [[self delegate] menuGroupTableViewCellDidShow:self];
+    
+}
+
+-(void)hide:(id)sender {
+    
+    [[self group] setHiddenValue:YES];
+    [self refreshEyeButton];
+    
+    if ([[self delegate] respondsToSelector:@selector(menuGroupTableViewCellDidHide:)])
+        [[self delegate] menuGroupTableViewCellDidHide:self];
+    
+}
+
+-(void)refreshEyeButton {
+    
+    [[self eyeButton] removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+    
+    if ([[self group] hiddenValue]) {
+        
+        [[self eyeButton] setAlpha:0.25];
+        [[self eyeButton] addTarget:self action:@selector(show:) forControlEvents:UIControlEventTouchUpInside];
+        
+    } else {
+        
+        [[self eyeButton] setAlpha:1.0];
+        [[self eyeButton] addTarget:self action:@selector(hide:) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+    }
     
 }
 
@@ -79,6 +132,8 @@
 -(void)setGroup:(PPGroup *)group {
     
     _group = group;
+    
+    [self refreshEyeButton];
     
     [[self nameLabel] setText:[group name]];
     [[self countLabel] setText:[NSString stringWithFormat:@"%ld Pinpoint%@",[[group pinpoints] count],([[group pinpoints] count] == 1) ? @"" : @"s"]];

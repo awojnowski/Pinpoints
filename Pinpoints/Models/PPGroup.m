@@ -9,6 +9,8 @@
 
 @implementation PPGroup
 
+@synthesize expanded=_expanded;
+
 #pragma mark - Getters & Setters
 
 -(NSArray *)pinpointsArray {
@@ -39,7 +41,7 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entity];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"group = nil"]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"name != nil"]];
     
     NSArray *results = [managedObjectContext executeFetchRequest:fetchRequest error:nil];
     return results;

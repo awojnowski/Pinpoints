@@ -4,12 +4,11 @@
 #import "_PPGroup.h"
 
 const struct PPGroupAttributes PPGroupAttributes = {
+	.hidden = @"hidden",
 	.name = @"name",
 };
 
 const struct PPGroupRelationships PPGroupRelationships = {
-	.group = @"group",
-	.groups = @"groups",
 	.pinpoints = @"pinpoints",
 };
 
@@ -42,9 +41,40 @@ const struct PPGroupFetchedProperties PPGroupFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"hiddenValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"hidden"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic hidden;
+
+
+
+- (BOOL)hiddenValue {
+	NSNumber *result = [self hidden];
+	return [result boolValue];
+}
+
+- (void)setHiddenValue:(BOOL)value_ {
+	[self setHidden:[NSNumber numberWithBool:value_]];
+}
+
+- (BOOL)primitiveHiddenValue {
+	NSNumber *result = [self primitiveHidden];
+	return [result boolValue];
+}
+
+- (void)setPrimitiveHiddenValue:(BOOL)value_ {
+	[self setPrimitiveHidden:[NSNumber numberWithBool:value_]];
+}
+
 
 
 
@@ -55,23 +85,6 @@ const struct PPGroupFetchedProperties PPGroupFetchedProperties = {
 
 
 
-
-@dynamic group;
-
-	
-
-@dynamic groups;
-
-	
-- (NSMutableSet*)groupsSet {
-	[self willAccessValueForKey:@"groups"];
-  
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"groups"];
-  
-	[self didAccessValueForKey:@"groups"];
-	return result;
-}
-	
 
 @dynamic pinpoints;
 

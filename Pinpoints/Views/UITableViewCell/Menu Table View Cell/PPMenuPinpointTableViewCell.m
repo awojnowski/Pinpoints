@@ -23,9 +23,13 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
+        [self setDefaultBackgroundColor:[UIColor colorWithRed:0.98 green:0.98 blue:0.98 alpha:1.0]];
+        [self setSelectedBackgroundColor:[UIColor colorWithRed:0.96 green:0.96 blue:0.96 alpha:1.0]];
+        
         UILabel *nameLabel = [[UILabel alloc] init];
         [nameLabel setBackgroundColor:[UIColor clearColor]];
         [nameLabel setTextColor:[UIColor grayColor]];
+        [nameLabel setFont:[UIFont systemFontOfSize:12.0]];
         [nameLabel setNumberOfLines:0];
         [[self contentView] addSubview:nameLabel];
         [self setNameLabel:nameLabel];
@@ -39,7 +43,9 @@
     
     [super layoutSubviews];
     
-    [[self nameLabel] setFrame:CGRectMake(10, 10, 300, 0)];
+    [[self nameLabel] setFrame:CGRectMake(0, 0, 256, 0)];
+    [[self nameLabel] sizeToFit];
+    [[self nameLabel] setFrame:CGRectMake(64, 10, 256, CGRectGetHeight([[self nameLabel] frame]))];
     
 }
 
@@ -69,8 +75,9 @@
     
     CGFloat height = 10.0;
     
+    [_label setFont:[UIFont systemFontOfSize:12.0]];
     [_label setText:[pinpoint name]];
-    [_label setFrame:CGRectMake(0, 0, 300, 0)];
+    [_label setFrame:CGRectMake(0, 0, 256, 0)];
     [_label sizeToFit];
     height += CGRectGetHeight([_label frame]);
     

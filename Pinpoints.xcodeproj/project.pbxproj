@@ -55,6 +55,7 @@
 		9340E6C7190C86A10069B7BF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9340E6C6190C86A10069B7BF /* CoreLocation.framework */; };
 		9340E6CB190C91F10069B7BF /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9340E6CA190C91F10069B7BF /* AddressBookUI.framework */; };
 		9340E6CF190C9DD40069B7BF /* PPConfirmActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9340E6CE190C9DD40069B7BF /* PPConfirmActionSheet.m */; };
+		9340E6D2190DAE250069B7BF /* PPChooseGroupActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9340E6D1190DAE250069B7BF /* PPChooseGroupActionSheet.m */; };
 		E28218185215426B8FD18C92 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B46D07E737D46EF84FBB44E /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +146,8 @@
 		9340E6CA190C91F10069B7BF /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		9340E6CD190C9DD40069B7BF /* PPConfirmActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPConfirmActionSheet.h; sourceTree = "<group>"; };
 		9340E6CE190C9DD40069B7BF /* PPConfirmActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPConfirmActionSheet.m; sourceTree = "<group>"; };
+		9340E6D0190DAE250069B7BF /* PPChooseGroupActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPChooseGroupActionSheet.h; sourceTree = "<group>"; };
+		9340E6D1190DAE250069B7BF /* PPChooseGroupActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPChooseGroupActionSheet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -453,6 +456,8 @@
 		9340E6CC190C9DB10069B7BF /* UIActionSheet */ = {
 			isa = PBXGroup;
 			children = (
+				9340E6D0190DAE250069B7BF /* PPChooseGroupActionSheet.h */,
+				9340E6D1190DAE250069B7BF /* PPChooseGroupActionSheet.m */,
 				9340E6CD190C9DD40069B7BF /* PPConfirmActionSheet.h */,
 				9340E6CE190C9DD40069B7BF /* PPConfirmActionSheet.m */,
 			);
@@ -619,6 +624,7 @@
 				9340E6B2190C62650069B7BF /* PPMapView.m in Sources */,
 				93095404190B3454006A4152 /* PPPinpoint.m in Sources */,
 				9340E6B6190C64330069B7BF /* PPPinpointAnnotation.m in Sources */,
+				9340E6D2190DAE250069B7BF /* PPChooseGroupActionSheet.m in Sources */,
 				930953F6190B2E14006A4152 /* PPViewController.m in Sources */,
 				9340E6C3190C81FA0069B7BF /* PPPinpointViewController.m in Sources */,
 				93095433190C39E9006A4152 /* PPMenuTableView.m in Sources */,

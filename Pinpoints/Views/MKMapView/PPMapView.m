@@ -11,11 +11,15 @@
 #import "PPPinpointAnnotation.h"
 #import "PPPinpointPinAnnotationView.h"
 
+#import "PPChooseGroupActionSheet.h"
+
 #import "PPCoreDataHandler.h"
 #import "PPGroup.h"
 #import "PPPinpoint.h"
 
 @interface PPMapView () <MKMapViewDelegate>
+
+@property (nonatomic, strong) NSMutableArray *groups;
 
 @end
 
@@ -33,11 +37,14 @@
     if (self) {
         
         [self setDelegate:self];
+        [self setGroups:[NSMutableArray array]];
         
         UILongPressGestureRecognizer *addPinGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapHoldPin:)];
         [self addGestureRecognizer:addPinGestureRecognizer];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managedObjectsChanged:) name:NSManagedObjectContextObjectsDidChangeNotification object:[[PPCoreDataHandler sharedHandler] managedObjectContext]];
+        
+        [self refreshVisibleGroups];
         
     }
     return self;
@@ -46,6 +53,43 @@
 
 #pragma mark - Actions
 
+-(void)createPinpointInGroup:(PPGroup *)group atCoordinate:(CLLocationCoordinate2D)coordinate {
+    
+    PPPinpoint *pinpoint = [PPPinpoint createPinpointInGroup:group];
+    [pinpoint setLatitudeValue:coordinate.latitude];
+    [pinpoint setLongitudeValue:coordinate.longitude];
+    [pinpoint fetchAddressFromCoordinate];
+    
+    PPPinpointAnnotation *annotation = [[PPPinpointAnnotation alloc] init];
+    [annotation setPinpoint:pinpoint];
+    [self addAnnotation:annotation];
+    
+    if ([[self mapDelegate] respondsToSelector:@selector(mapView:didPlacePinpoint:)])
+        [[self mapDelegate] mapView:self didPlacePinpoint:pinpoint];
+    
+}
+
+-(void)createPinpointInAnyGroupAtCoordinate:(CLLocationCoordinate2D)coordinate {
+    
+    [self createPinpointInGroups:[PPGroup allGroups] atCoordinate:coordinate];
+    
+}
+
+-(void)createPinpointInGroups:(NSArray *)groups atCoordinate:(CLLocationCoordinate2D)coordinate {
+    
+    PPChooseGroupActionSheet *chooseGroupActionSheet = [[PPChooseGroupActionSheet alloc] initWithGroups:groups];
+    [chooseGroupActionSheet setChosenBlock:^(PPGroup *group) {
+        
+        [group setHiddenValue:NO];
+        [self refreshVisibleGroups];
+        
+        [self createPinpointInGroup:group atCoordinate:coordinate];
+        
+    }];
+    [chooseGroupActionSheet showInView:[self superview]];
+    
+}
+
 -(void)handleTapHoldPin:(UILongPressGestureRecognizer *)gestureRecognizer {
     
     if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
@@ -53,38 +97,56 @@
         CGPoint point = [gestureRecognizer locationInView:self];
         CLLocationCoordinate2D coordinate = [self convertPoint:point toCoordinateFromView:self];
         
-        PPPinpoint *pinpoint = [PPPinpoint createPinpointInGroup:[self group]];
-        [pinpoint setLatitudeValue:coordinate.latitude];
-        [pinpoint setLongitudeValue:coordinate.longitude];
-        [pinpoint fetchAddressFromCoordinate];
-        
-        PPPinpointAnnotation *annotation = [[PPPinpointAnnotation alloc] init];
-        [annotation setPinpoint:pinpoint];
-        [self addAnnotation:annotation];
-        
-        if ([[self mapDelegate] respondsToSelector:@selector(mapView:didPlacePinpoint:)])
-            [[self mapDelegate] mapView:self didPlacePinpoint:pinpoint];
+        if ([[self groups] count] == 0) {
+            
+            [self createPinpointInAnyGroupAtCoordinate:coordinate];
+            
+        } else if ([[self groups] count] == 1) {
+            
+            [self createPinpointInGroup:[[self groups] firstObject] atCoordinate:coordinate];
+            
+        } else {
+            
+            [self createPinpointInGroups:[self groups] atCoordinate:coordinate];
+            
+        }
         
     }
     
 }
 
-#pragma mark - Getters & Setters
+#pragma mark - Group Management
 
--(void)setGroup:(PPGroup *)group {
+-(void)refreshVisibleGroups {
     
-    _group = group;
-    
-    NSArray *currentAnnotations = [self annotations];
-    for (id <MKAnnotation> annotation in currentAnnotations) {
+    NSArray *allGroups = [PPGroup allGroups];
+    for (PPGroup *group in allGroups) {
         
-        if ([annotation isKindOfClass:[PPPinpointAnnotation class]]) {
+        if ([[self groups] containsObject:group]) {
             
-            [self removeAnnotation:annotation];
+            if ([group hiddenValue]) {
+                
+                [[self groups] removeObject:group];
+                [self removePinpointsFromGroup:group];
+                
+            }
+            
+        } else {
+            
+            if (![group hiddenValue]) {
+                
+                [[self groups] addObject:group];
+                [self addPinpointsFromGroup:group];
+                
+            }
             
         }
         
     }
+    
+}
+
+-(void)addPinpointsFromGroup:(PPGroup *)group {
     
     NSMutableArray *annotations = [NSMutableArray array];
     for (PPPinpoint *pinpoint in [[group pinpoints] allObjects]) {
@@ -100,6 +162,51 @@
         [self addAnnotations:annotations];
         
     }
+    
+}
+
+-(void)removePinpointsFromGroup:(PPGroup *)group {
+    
+    NSMutableArray *annotations = [NSMutableArray array];
+    for (PPPinpoint *pinpoint in [[group pinpoints] allObjects]) {
+        
+        for (id <MKAnnotation> annotation in [self annotations]) {
+            
+            if ([annotation isKindOfClass:[PPPinpointAnnotation class]]) {
+                
+                if ([(PPPinpointAnnotation *)annotation pinpoint] == pinpoint) {
+                    
+                    [annotations addObject:annotation];
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+    if ([annotations count] > 0) {
+        
+        [self removeAnnotations:annotations];
+        
+    }
+    
+}
+
+#pragma mark - Pinpoint Management
+
+-(void)zoomToPinpoint:(PPPinpoint *)pinpoint {
+    
+    [[pinpoint group] setHiddenValue:NO];
+    [self refreshVisibleGroups];
+    
+    MKCoordinateRegion region;
+    region.center.latitude = [pinpoint coordinate].latitude;
+    region.center.longitude = [pinpoint coordinate].longitude;
+    region.span.latitudeDelta = 0.01;
+    region.span.longitudeDelta = 0.01;
+    [self setRegion:region animated:YES];
     
 }
 
@@ -166,10 +273,10 @@
 
 -(void)managedObjectsChanged:(NSNotification *)notification {
     
-    NSSet *updatedObjects = [[notification userInfo] objectForKey:NSDeletedObjectsKey];
+    BOOL refreshGroups = NO;
     
-    // iterate through managed objects
-    for (NSManagedObject *object in updatedObjects) {
+    NSSet *deletedObjects = [[notification userInfo] objectForKey:NSDeletedObjectsKey];
+    for (NSManagedObject *object in deletedObjects) {
         
         if ([object isKindOfClass:[PPPinpoint class]]) {
             
@@ -189,7 +296,28 @@
                 
             }
             
+        } else if ([object isKindOfClass:[PPGroup class]]) {
+            
+            refreshGroups = YES;
+            
         }
+        
+    }
+    
+    NSSet *insertedObjects = [[notification userInfo] objectForKey:NSInsertedObjectsKey];
+    for (NSManagedObject *object in insertedObjects) {
+        
+        if ([object isKindOfClass:[PPGroup class]]) {
+            
+            refreshGroups = YES;
+            
+        }
+        
+    }
+    
+    if (refreshGroups) {
+        
+        [self refreshVisibleGroups];
         
     }
     
